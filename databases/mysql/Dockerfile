@@ -8,6 +8,7 @@ RUN apt-get update && \
     yes | unminimize && \
     apt-get -y install \
         openssh-server \
+        gnupg2 \
         passwd \
         sudo \
         man-db \
@@ -45,6 +46,7 @@ RUN chmod 600 /home/vagrant/.ssh/authorized_keys; \
     chown -R vagrant:vagrant /home/vagrant/.ssh
 
 # Copy package repos for installing MySQL 5.7 on Ubuntu 20.04, and then install MySQL.
+RUN apt-key adv --keyserver pgp.mit.edu --recv-keys 5072E1F5
 COPY mysql-5.7-repos.list /etc/apt/sources.list.d/mysql.list
 COPY mysql-apt-prefs /etc/apt/preferences.d/mysql
 RUN apt update
