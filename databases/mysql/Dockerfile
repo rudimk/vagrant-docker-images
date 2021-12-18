@@ -44,7 +44,7 @@ ADD https://raw.githubusercontent.com/hashicorp/vagrant/master/keys/vagrant.pub 
 RUN chmod 600 /home/vagrant/.ssh/authorized_keys; \
     chown -R vagrant:vagrant /home/vagrant/.ssh
 
-# Copy package repos for installing MySQL, and then install MySQL.
+# Copy package repos for installing MySQL 5.7 on Ubuntu 20.04, and then install MySQL.
 COPY mysql-5.7-repos.list /etc/apt/sources.list.d/mysql.list
 COPY mysql-apt-prefs /etc/apt/preferences.d/mysql
 RUN apt update
