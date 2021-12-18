@@ -4,8 +4,8 @@ on:
   push:
     branches:
       - 'master'
-  paths:
-    - 'databases/mysql/**'
+    paths:
+      - 'databases/mysql/**'
 
 jobs:
   docker:
