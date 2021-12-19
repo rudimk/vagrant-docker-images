@@ -50,11 +50,7 @@ RUN chmod 600 /home/vagrant/.ssh/authorized_keys; \
 RUN echo "deb https://download.rethinkdb.com/repository/ubuntu-focal focal main" | tee /etc/apt/sources.list.d/rethinkdb.list
 RUN wget -qO- https://download.rethinkdb.com/repository/raw/pubkey.gpg | apt-key add -
 RUN apt update && apt install -y rethinkdb
-RUN systemctl stop rethinkdb
-RUN mkdir /home/vagrant/rethinkdb
-RUN rm -r /etc/init.d/rethinkdb
-COPY systemd-rethinkdb.service /etc/systemd/system/rethinkdb.service
-RUN systemctl daemon-reload && systemctl start rethinkdb.service && systemctl enable rethinkdb.service
+
 
 # Run the init daemon
 VOLUME [ "/sys/fs/cgroup" ]
