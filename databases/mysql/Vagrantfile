@@ -2,7 +2,7 @@ Vagrant.configure("2") do |config|
     # Provider for Docker
     config.vm.provider :docker do |docker, override|
       override.vm.box = nil
-      docker.image = "rudester/vagrant-docker-mysql:5.7-r0.4"
+      docker.image = "rudester/vagrant-docker-mysql:5.7-r0.5"
       docker.remains_running = true
       docker.has_ssh = true
       docker.privileged = true
@@ -11,4 +11,5 @@ Vagrant.configure("2") do |config|
       docker.create_args = ['--platform=linux/amd64']
     end
     config.vm.hostname = "vagrant-docker-mysql-box"
+    config.vm.network "private_network", ip: "10.0.0.10"
   end
