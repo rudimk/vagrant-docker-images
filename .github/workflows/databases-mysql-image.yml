@@ -32,4 +32,4 @@ jobs:
         with:
           context: 'databases/mysql/'
           push: true
-          tags: rudester/vagrant-docker-mysql:5.7-r0.1
+          tags: rudester/vagrant-docker-mysql:5.7-r0.2
