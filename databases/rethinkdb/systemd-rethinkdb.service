@@ -1,0 +1,14 @@
+[Unit]
+Description=RethinkDB
+After=network.target
+
+[Service]
+Type=simple
+User=vagrant
+WorkingDirectory=/home/vagrant/rethinkdb
+ExecStart=/usr/bin/rethinkdb -d /home/vagrant/rethinkdb --bind all
+Restart=on-failure
+# Other restart options: always, on-abort, etc
+
+[Install]
+WantedBy=multi-user.target
