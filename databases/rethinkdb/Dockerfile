@@ -14,6 +14,9 @@ RUN apt-get update && \
         man-db \
         curl \
         wget \
+        net-tools \
+        dnsutils \
+        telnet \
         vim \
         vim-tiny && \
     apt-get -qq clean && \
