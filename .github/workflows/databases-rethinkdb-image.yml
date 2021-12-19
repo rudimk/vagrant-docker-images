@@ -32,4 +32,4 @@ jobs:
         with:
           context: 'databases/rethinkdb/'
           push: true
-          tags: rudester/vagrant-docker-rethinkdb:2.4.1-r0.1
+          tags: rudester/vagrant-docker-rethinkdb:2.4.1-r0.2
