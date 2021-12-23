@@ -23,6 +23,7 @@ RUN apt-get update && \
         make \
         telnet \
         git \
+        unzip \
         vim \
         vim-tiny && \
     apt-get -qq clean && \
