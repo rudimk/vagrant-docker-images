@@ -16,6 +16,11 @@ RUN apt-get update && \
         wget \
         net-tools \
         dnsutils \
+        gcc \
+        g++ \
+        build-essential \
+        binutils \
+        make \
         telnet \
         git \
         vim \
