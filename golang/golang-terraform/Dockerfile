@@ -63,6 +63,7 @@ RUN echo 'export PATH=$PATH:/usr/local/go/bin' >> /home/vagrant/.bashrc
 # Install tfenv for installing multiple versions of Terraform.
 RUN git clone https://github.com/tfutils/tfenv.git /home/vagrant/.tfenv
 RUN echo 'export PATH="$HOME/.tfenv/bin:$PATH"' >> /home/vagrant/.bashrc
+RUN chown -R vagrant:vagrant /home/vagrant/.tfenv
 
 # Run the init daemon
 VOLUME [ "/sys/fs/cgroup" ]
