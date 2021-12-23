@@ -57,7 +57,7 @@ RUN chmod 600 /home/vagrant/.ssh/authorized_keys; \
 
 # Install Golang 1.15.16
 RUN curl -OL https://golang.org/dl/go1.15.16.linux-amd64.tar.gz
-RUN tar -C /usr/local -xvf go1.16.7.linux-amd64.tar.gz
+RUN tar -C /usr/local -xvf go1.15.16.linux-amd64.tar.gz
 RUN echo 'export PATH=$PATH:/usr/local/go/bin' >> /home/vagrant/.bashrc
 
 # Install tfenv for installing multiple versions of Terraform.
