@@ -56,7 +56,7 @@ RUN chmod 600 /home/vagrant/.ssh/authorized_keys; \
     chown -R vagrant:vagrant /home/vagrant/.ssh
 
 # Install Golang 1.15.16
-RUN curl -OL https://golang.org/dl/go1.15.16.linux-amd64.tar.gz
+RUN curl -OL https://go.dev/dl/go1.15.15.linux-amd64.tar.gz
 RUN tar -C /usr/local -xvf go1.15.16.linux-amd64.tar.gz
 RUN echo 'export PATH=$PATH:/usr/local/go/bin' >> /home/vagrant/.bashrc
 
