@@ -32,4 +32,4 @@ jobs:
         with:
           context: 'golang/golang-terraform/'
           push: true
-          tags: rudester/vagrant-docker-golang-terraform:1.15.16-r0.1
+          tags: rudester/vagrant-docker-golang-terraform:1.15.15-r0.2
