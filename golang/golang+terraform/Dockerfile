@@ -60,7 +60,7 @@ RUN curl -OL https://golang.org/dl/go1.15.16.linux-amd64.tar.gz
 RUN tar -C /usr/local -xvf go1.16.7.linux-amd64.tar.gz
 RUN echo 'export PATH=$PATH:/usr/local/go/bin' >> /home/vagrant/.bashrc
 
-# Install tfenv
+# Install tfenv for installing multiple versions of Terraform.
 RUN git clone https://github.com/tfutils/tfenv.git /home/vagrant/.tfenv
 RUN echo 'export PATH="$HOME/.tfenv/bin:$PATH"' >> /home/vagrant/.bashrc
 
