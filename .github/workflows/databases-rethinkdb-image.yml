@@ -1,4 +1,4 @@
-name: ci
+name: databases-rethinkdb-image
 
 on:
   push:
