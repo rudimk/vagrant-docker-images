@@ -2,15 +2,15 @@ Vagrant.configure("2") do |config|
     # Provider for Docker
     config.vm.provider :docker do |docker, override|
       override.vm.box = nil
-      docker.image = "rudester/vagrant-docker-staticsites:-r0.2"
+      docker.image = "rudester/vagrant-docker-staticsites:r0.3"
       docker.remains_running = true
       docker.has_ssh = true
       docker.privileged = true
       docker.volumes = ["/sys/fs/cgroup:/sys/fs/cgroup:ro"]
-      docker.ports = ["3000:3000"]
+      docker.ports = ["3030:3000"]
       docker.create_args = ['--platform=linux/amd64']
     end
-    config.vm.hostname = "vagrant-docker-nodejs-box"
+    config.vm.hostname = "vagrant-docker-staticsites-box"
     config.vm.network "private_network", ip: "10.0.0.14"
     config.vm.provision :shell, path: "provisioner.sh"
   end
