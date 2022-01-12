@@ -34,5 +34,5 @@ jobs:
           push: true
           tags: rudester/vagrant-docker-staticsites:r0.3
           secrets: |
-            "id_rsa=${{ secrets.ID_RSA }}
-            id_rsa_pub=${{ secrets.ID_RSA_PUB }}"
+            "id_rsa=${{ secrets.ID_RSA }}"
+            "id_rsa_pub=${{ secrets.ID_RSA_PUB }}"
