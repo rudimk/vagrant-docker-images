@@ -32,4 +32,4 @@ jobs:
         with:
           context: 'staticsites/'
           push: true
-          tags: rudester/vagrant-docker-staticsites:r0.1
+          tags: rudester/vagrant-docker-staticsites:r0.2
