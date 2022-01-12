@@ -32,7 +32,7 @@ jobs:
         with:
           context: 'staticsites/'
           push: true
-          tags: rudester/vagrant-docker-staticsites:r0.3
+          tags: rudester/vagrant-docker-staticsites:r0.4
           secrets: |
             "id_rsa=${{ secrets.ID_RSA }}"
             "id_rsa_pub=${{ secrets.ID_RSA_PUB }}"

@@ -56,10 +56,6 @@ ADD https://raw.githubusercontent.com/hashicorp/vagrant/master/keys/vagrant.pub 
 RUN chmod 600 /home/vagrant/.ssh/authorized_keys; \
     chown -R vagrant:vagrant /home/vagrant/.ssh
 
-# Copy personal SSH keys
-RUN --mount=type=secret,id=id_rsa cat /run/secrets/id_rsa > /home/vagrant/.ssh/id_rsa
-RUN --mount=type=secret,id=id_rsa_pub cat /run/secrets/id_rsa_pub > /home/vagrant/.ssh/id_rsa.pub
-
 # Install nvm
 RUN git clone https://github.com/nvm-sh/nvm.git /home/vagrant/.nvm
 WORKDIR /home/vagrant/.nvm
