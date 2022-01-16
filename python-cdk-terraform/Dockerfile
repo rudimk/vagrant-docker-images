@@ -21,6 +21,9 @@ RUN apt-get update && \
         build-essential \
         binutils \
         make \
+        python3-dev \
+        python3-distutils \
+        python3-apt \
         telnet \
         git \
         unzip \
