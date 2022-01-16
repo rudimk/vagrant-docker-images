@@ -62,7 +62,7 @@ RUN chmod 600 /home/vagrant/.ssh/authorized_keys; \
 RUN git clone https://github.com/tfutils/tfenv.git /home/vagrant/.tfenv
 RUN echo 'export PATH="$HOME/.tfenv/bin:$PATH"' >> /home/vagrant/.bashrc
 RUN chown -R vagrant:vagrant /home/vagrant/.tfenv
-RUN tfenv install latest
+RUN /home/vagrant/.tfenv/bin/tfenv install latest
 
 # Install nvm and cdktf
 RUN git clone https://github.com/nvm-sh/nvm.git /home/vagrant/.nvm
