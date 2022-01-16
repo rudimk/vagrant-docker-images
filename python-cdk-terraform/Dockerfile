@@ -60,6 +60,9 @@ ADD https://raw.githubusercontent.com/hashicorp/vagrant/master/keys/vagrant.pub 
 RUN chmod 600 /home/vagrant/.ssh/authorized_keys; \
     chown -R vagrant:vagrant /home/vagrant/.ssh
 
+# Install locales
+RUN locale-gen en_US en_US.UTF-8
+
 # Install tfenv and Terraform
 # Install tfenv for installing multiple versions of Terraform.
 RUN git clone https://github.com/tfutils/tfenv.git /home/vagrant/.tfenv
