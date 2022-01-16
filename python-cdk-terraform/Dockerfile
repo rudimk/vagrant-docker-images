@@ -28,6 +28,7 @@ RUN apt-get update && \
         git \
         unzip \
         bash-completion \
+        locales \
         vim \
         vim-tiny && \
     apt-get -qq clean && \

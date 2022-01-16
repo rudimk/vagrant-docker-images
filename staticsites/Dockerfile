@@ -24,6 +24,8 @@ RUN apt-get update && \
         telnet \
         git \
         unzip \
+        bash-completion \
+        locales \
         vim \
         vim-tiny && \
     apt-get -qq clean && \
