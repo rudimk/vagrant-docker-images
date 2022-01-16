@@ -82,6 +82,10 @@ RUN . /home/vagrant/.nvm/nvm.sh && npm install cdktf-cli@latest
 WORKDIR /
 RUN curl https://raw.githubusercontent.com/pypa/pipenv/master/get-pipenv.py | python3
 
+# Configure git
+RUN git config --global user.email "rudimk.cloud@gmail.com"
+RUN git config --global user.name "Rudi MK"
+
 # Run the init daemon
 VOLUME [ "/sys/fs/cgroup" ]
 CMD ["/usr/sbin/init"]
