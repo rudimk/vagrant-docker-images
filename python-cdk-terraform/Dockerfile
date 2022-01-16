@@ -65,7 +65,8 @@ RUN chmod 600 /home/vagrant/.ssh/authorized_keys; \
 RUN git clone https://github.com/tfutils/tfenv.git /home/vagrant/.tfenv
 RUN echo 'export PATH="$HOME/.tfenv/bin:$PATH"' >> /home/vagrant/.bashrc
 RUN chown -R vagrant:vagrant /home/vagrant/.tfenv
-RUN /home/vagrant/.tfenv/bin/tfenv install latest
+RUN su - vagrant -c "/home/vagrant/.tfenv/bin/tfenv install latest"
+RUN su - vagrant -c "/home/vagrant/.tfenv/bin/tfenv use latest"
 
 # Install nvm and cdktf
 RUN git clone https://github.com/nvm-sh/nvm.git /home/vagrant/.nvm
@@ -75,16 +76,16 @@ RUN echo 'export NVM_DIR="$HOME/.nvm"' >> /home/vagrant/.bashrc
 RUN echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> /home/vagrant/.bashrc
 RUN echo '[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"' >> /home/vagrant/.bashrc
 RUN chown -R vagrant:vagrant /home/vagrant/.nvm
-RUN . /home/vagrant/.nvm/nvm.sh && nvm install lts/fermium
-RUN . /home/vagrant/.nvm/nvm.sh && npm install cdktf-cli@latest
+RUN su - vagrant -c ". /home/vagrant/.nvm/nvm.sh && nvm install lts/fermium"
+RUN su - vagrant -c ". /home/vagrant/.nvm/nvm.sh && npm install cdktf-cli@latest"
 
 # Install pip3 and pipenv
 WORKDIR /
-RUN curl https://raw.githubusercontent.com/pypa/pipenv/master/get-pipenv.py | python3
+RUN su - vagrant -c "curl https://raw.githubusercontent.com/pypa/pipenv/master/get-pipenv.py | python3"
 
 # Configure git
-RUN git config --global user.email "rudimk.cloud@gmail.com"
-RUN git config --global user.name "Rudi MK"
+RUN su - vagrant -c 'git config --global user.email "rudimk.cloud@gmail.com"'
+RUN su - vagrant -c 'git config --global user.name "Rudi MK"'
 
 # Run the init daemon
 VOLUME [ "/sys/fs/cgroup" ]
