@@ -72,8 +72,8 @@ RUN echo 'export NVM_DIR="$HOME/.nvm"' >> /home/vagrant/.bashrc
 RUN echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> /home/vagrant/.bashrc
 RUN echo '[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"' >> /home/vagrant/.bashrc
 RUN chown -R vagrant:vagrant /home/vagrant/.nvm
-RUN source /home/vagrant/.nvm/nvm.sh && nvm install lts/fermium
-RUN source /home/vagrant/.nvm/nvm.sh && npm install cdktf-cli@latest
+RUN . /home/vagrant/.nvm/nvm.sh && nvm install lts/fermium
+RUN . /home/vagrant/.nvm/nvm.sh && npm install cdktf-cli@latest
 
 # Install pip3 and pipenv
 WORKDIR /
