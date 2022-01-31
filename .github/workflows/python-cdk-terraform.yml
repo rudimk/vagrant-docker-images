@@ -32,4 +32,4 @@ jobs:
         with:
           context: 'python-cdk-terraform/'
           push: true
-          tags: rudester/vagrant-docker-python-cdk-terraform:0.6.0
+          tags: rudester/vagrant-docker-python-cdk-terraform:0.7.0
