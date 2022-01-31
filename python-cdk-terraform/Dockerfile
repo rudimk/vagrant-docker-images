@@ -81,7 +81,7 @@ RUN echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> /home/vagrant/.ba
 RUN echo '[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"' >> /home/vagrant/.bashrc
 RUN chown -R vagrant:vagrant /home/vagrant/.nvm
 RUN su - vagrant -c ". /home/vagrant/.nvm/nvm.sh && nvm install lts/fermium"
-RUN su - vagrant -c ". /home/vagrant/.nvm/nvm.sh && npm install cdktf-cli@latest"
+RUN su - vagrant -c ". /home/vagrant/.nvm/nvm.sh && npm install -g cdktf-cli@latest"
 
 # Install pip3 and pipenv
 WORKDIR /
