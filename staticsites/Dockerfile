@@ -73,6 +73,7 @@ RUN chown -R vagrant:vagrant /home/vagrant/.nvm
 # Configure git
 RUN git config --global user.email "rudimk.cloud@gmail.com"
 RUN git config --global user.name "Rudi MK"
+RUN echo 'source /usr/share/bash-completion/completions/git' >> /home/vagrant/.bashrc
 
 # Run the init daemon
 VOLUME [ "/sys/fs/cgroup" ]
