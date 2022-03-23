@@ -32,4 +32,4 @@ jobs:
         with:
           context: 'kubernetes-terraform-lab/'
           push: true
-          tags: rudester/kubernetes-terraform-lab:v0.1.0
+          tags: rudester/kubernetes-terraform-lab:v0.2.0
