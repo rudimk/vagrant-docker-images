@@ -13,4 +13,7 @@ echo "Public key ==>"
 su - vagrant -c 'cat ~/.ssh/id_ed25519.pub'
 
 # Install Terraform v1.0.9
-su - vagrant -c 'tfenv install 1.0.9'
+su - vagrant -c '/home/vagrant/.tfenv/bin/tfenv install 1.0.9'
+
+# Make Terraform v1.0.9 the default version
+su - vagrant -c '/home/vagrant/.tfenv/bin/tfenv use 1.0.9'
