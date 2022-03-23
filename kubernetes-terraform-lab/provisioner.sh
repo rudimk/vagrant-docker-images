@@ -2,7 +2,7 @@
 
 # Generate SSH key
 echo "Generating new SSH ED25519 key ==>"
-su - vagrant -c 'ssh-keygen -t ed25519 -C "rudimk.cloud@gmail.com" -f /home/vagrant/.ssh/id_ed25519 -q -N ""'
+su - vagrant -c 'ssh-keygen -t ed25519 -C "<EMAIL>" -f /home/vagrant/.ssh/id_ed25519 -q -N ""'
 
 # Add SSH key to the SSH agent
 echo "Adding the key to the SSH agent ==>"
