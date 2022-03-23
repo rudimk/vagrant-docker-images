@@ -67,6 +67,9 @@ RUN echo 'export PATH="$HOME/.tfenv/bin:$PATH"' >> /home/vagrant/.bashrc
 RUN chown -R vagrant:vagrant /home/vagrant/.tfenv
 RUN ln -s ~/.tfenv/bin/* /usr/local/bin/
 
+# Switch to the vagrant user
+USER vagrant
+
 # Configure git
 RUN git config --global user.email "rudimk.cloud@gmail.com"
 RUN git config --global user.name "Rudi MK"
