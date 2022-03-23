@@ -67,6 +67,11 @@ RUN echo 'export PATH="$HOME/.tfenv/bin:$PATH"' >> /home/vagrant/.bashrc
 RUN chown -R vagrant:vagrant /home/vagrant/.tfenv
 RUN ln -s ~/.tfenv/bin/* /usr/local/bin/
 
+# Configure git
+RUN git config --global user.email "rudimk.cloud@gmail.com"
+RUN git config --global user.name "Rudi MK"
+RUN echo 'source /usr/share/bash-completion/completions/git' >> /home/vagrant/.bashrc
+
 # Run the init daemon
 VOLUME [ "/sys/fs/cgroup" ]
 CMD ["/usr/sbin/init"]
