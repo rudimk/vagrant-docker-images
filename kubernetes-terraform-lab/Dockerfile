@@ -14,6 +14,9 @@ RUN apt-get update && \
         man-db \
         curl \
         wget \
+        apt-transport-https \
+        ca-certificates \
+        gnupg \
         net-tools \
         dnsutils \
         gcc \
@@ -24,6 +27,8 @@ RUN apt-get update && \
         telnet \
         git \
         unzip \
+        python3 \
+        python3-dev \
         vim \
         vim-tiny && \
     apt-get -qq clean && \
@@ -74,6 +79,18 @@ RUN curl -OL https://get.helm.sh/helm-v3.7.0-linux-amd64.tar.gz
 RUN tar -zxvf helm-v3.7.0-linux-amd64.tar.gz
 RUN mv linux-amd64/helm /usr/local/bin/helm
 RUN rm -r kubectl && rm -r linux-amd64
+
+# Install CLIs for AWS, GCP, and DO
+RUN curl -LO https://bootstrap.pypa.io/get-pip.py
+RUN python3 get-pip.py
+RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" && unzip awscliv2.zip && ./aws/install
+RUN echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
+RUN curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key --keyring /usr/share/keyrings/cloud.google.gpg add -
+RUN apt update && apt install google-cloud-cli
+RUN curl -LO https://github.com/digitalocean/doctl/releases/download/v1.71.0/doctl-1.71.0-linux-amd64.tar.gz
+RUN tar -xf doctl-1.71.0-linux-amd64.tar.gz
+RUN mv doctl /usr/local/bin
+
 
 # Configure git
 RUN touch /home/vagrant/.gitconfig
