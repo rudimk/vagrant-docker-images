@@ -67,6 +67,14 @@ RUN echo 'export PATH="$HOME/.tfenv/bin:$PATH"' >> /home/vagrant/.bashrc
 RUN chown -R vagrant:vagrant /home/vagrant/.tfenv
 RUN ln -s ~/.tfenv/bin/* /usr/local/bin/
 
+# Install kubectl and helm
+RUN curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+RUN install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+RUN curl -OL https://get.helm.sh/helm-v3.7.0-linux-amd64.tar.gz
+RUN tar -zxvf helm-v3.7.0-linux-amd64.tar.gz
+RUN mv linux-amd64/helm /usr/local/bin/helm
+RUN rm -r kubectl && rm -r linux-amd64
+
 # Configure git
 RUN touch /home/vagrant/.gitconfig
 RUN echo '[user]' >> /home/vagrant/.gitconfig
