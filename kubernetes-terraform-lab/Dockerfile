@@ -93,6 +93,8 @@ RUN curl -LO https://github.com/digitalocean/doctl/releases/download/v1.71.0/doc
 RUN tar -xf doctl-1.71.0-linux-amd64.tar.gz
 RUN mv doctl /usr/local/bin
 
+# Install the Porter CLI
+RUN curl -LO https://install.porter.run | bash -
 
 # Configure git
 RUN touch /home/vagrant/.gitconfig
