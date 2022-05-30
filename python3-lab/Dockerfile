@@ -64,9 +64,10 @@ RUN chmod 600 /home/vagrant/.ssh/authorized_keys; \
 # Install locales
 RUN locale-gen en_US en_US.UTF-8
 
-# Install pip3 and pipenv
+# Install pip3
 WORKDIR /
-RUN su - vagrant -c "curl https://raw.githubusercontent.com/pypa/pipenv/master/get-pipenv.py | python3"
+#RUN su - vagrant -c "curl https://raw.githubusercontent.com/pypa/pipenv/master/get-pipenv.py | python3"
+RUN apt install python3-pip
 
 # Configure git
 RUN su - vagrant -c 'git config --global user.email "rudimk.cloud@gmail.com"'
