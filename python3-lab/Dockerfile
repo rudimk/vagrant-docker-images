@@ -67,7 +67,7 @@ RUN locale-gen en_US en_US.UTF-8
 # Install pip3
 WORKDIR /
 #RUN su - vagrant -c "curl https://raw.githubusercontent.com/pypa/pipenv/master/get-pipenv.py | python3"
-RUN apt install python3-pip
+RUN python3 -m ensurepip --upgrade
 
 # Configure git
 RUN su - vagrant -c 'git config --global user.email "rudimk.cloud@gmail.com"'
