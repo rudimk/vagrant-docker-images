@@ -32,4 +32,4 @@ jobs:
         with:
           context: 'python3-lab/'
           push: true
-          tags: rudester/python3-lab:3.8-0.1
+          tags: rudester/python3-lab:3.8-0.2
