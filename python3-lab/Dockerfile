@@ -24,6 +24,7 @@ RUN apt-get update && \
         python3-dev \
         python3-distutils \
         python3-apt \
+        python3-pip \
         telnet \
         git \
         unzip \
@@ -65,9 +66,9 @@ RUN chmod 600 /home/vagrant/.ssh/authorized_keys; \
 RUN locale-gen en_US en_US.UTF-8
 
 # Install pip3
-WORKDIR /
+#WORKDIR /
 #RUN su - vagrant -c "curl https://raw.githubusercontent.com/pypa/pipenv/master/get-pipenv.py | python3"
-RUN python3 -m ensurepip --upgrade
+
 
 # Configure git
 RUN su - vagrant -c 'git config --global user.email "rudimk.cloud@gmail.com"'
