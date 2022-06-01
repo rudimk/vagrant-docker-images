@@ -24,7 +24,6 @@ RUN apt-get update && \
         python3-dev \
         python3-distutils \
         python3-apt \
-        python3-pip \
         telnet \
         git \
         unzip \
@@ -65,14 +64,37 @@ RUN chmod 600 /home/vagrant/.ssh/authorized_keys; \
 # Install locales
 RUN locale-gen en_US en_US.UTF-8
 
-# Install pip3
-#WORKDIR /
-#RUN su - vagrant -c "curl https://raw.githubusercontent.com/pypa/pipenv/master/get-pipenv.py | python3"
+# Install kubectl and helm
+RUN curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+RUN install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+RUN curl -OL https://get.helm.sh/helm-v3.7.0-linux-amd64.tar.gz
+RUN tar -zxvf helm-v3.7.0-linux-amd64.tar.gz
+RUN mv linux-amd64/helm /usr/local/bin/helm
+RUN rm -r kubectl && rm -r linux-amd64
 
+# Install pip3 and pipenv3
+RUN curl -LO https://bootstrap.pypa.io/get-pip.py
+RUN curl -LO https://raw.githubusercontent.com/pypa/pipenv/master/get-pipenv.py
+RUN python3 get-pip.py && python3 get-pipenv.py
+
+# Install CLIs for AWS, GCP, and DO
+RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" && unzip awscliv2.zip && ./aws/install
+RUN echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
+RUN curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key --keyring /usr/share/keyrings/cloud.google.gpg add -
+RUN apt update && apt install google-cloud-cli
+RUN curl -LO https://github.com/digitalocean/doctl/releases/download/v1.71.0/doctl-1.71.0-linux-amd64.tar.gz
+RUN tar -xf doctl-1.71.0-linux-amd64.tar.gz
+RUN mv doctl /usr/local/bin
+
+# Install the Porter CLI
+RUN curl -fsSL https://install.porter.run | bash -
 
 # Configure git
-RUN su - vagrant -c 'git config --global user.email "rudimk.cloud@gmail.com"'
-RUN su - vagrant -c 'git config --global user.name "Rudi MK"'
+RUN touch /home/vagrant/.gitconfig
+RUN echo '[user]' >> /home/vagrant/.gitconfig
+RUN echo 'name = Rudi MK' >> /home/vagrant/.gitconfig
+RUN echo 'email = rudimk.cloud@gmail.com' >> /home/vagrant/.gitconfig
+RUN echo 'source /usr/share/bash-completion/completions/git' >> /home/vagrant/.bashrc
 
 # Run the init daemon
 VOLUME [ "/sys/fs/cgroup" ]
